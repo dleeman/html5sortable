@@ -63,7 +63,10 @@
       items.attr('aria-grabbed', 'false');
 
       // Setup drag handles
-      handles.attr('draggable', 'true').not('a[href], img').on('selectstart.h5s', function() {
+      handles.attr('draggable', 'true').not('a[href], img').on('selectstart.h5s', function(e) {
+        if ($(e.target).is('input[type=text], textarea')){
+          return true;
+        }
         if (this.dragDrop) {
           this.dragDrop();
         }
